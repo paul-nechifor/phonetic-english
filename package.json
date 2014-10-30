@@ -1,0 +1,19 @@
+{
+  "name": "phonetic-english",
+  "version": "0.0.0",
+  "author": "Paul Nechifor <paul@nechifor.net> (http://nechifor.net/)",
+  "description": "Transforms English spelling to be phonetic.",
+  "main": "./lib",
+  "scripts": {
+    "preinstall": "rm -fr lib; coffee -cbo lib src"
+  },
+  "dependencies": {
+    "coffee-script": "^1.8.0",
+    "optimist": "^0.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paul-nechifor/phonetic-english"
+  },
+  "license": "MIT"
+}
