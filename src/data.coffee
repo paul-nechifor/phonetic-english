@@ -21,6 +21,7 @@ main = (cb) ->
     return cb err if err
     processPronunciations (err) ->
       return cb err if err
+      cleanup cb
 
 downloadFile = (cb) ->
   return cb() if fs.existsSync data + '/mpron.txt'
@@ -38,6 +39,7 @@ downloadFile = (cb) ->
 
 # Transforms the codes to use single ordered characters for simpler processing.
 processPronunciations = (cb) ->
+  console.log 'Transforming pronunciations...'
   fs.readFile data + '/mpron.txt', {encoding: 'utf8'}, (err, data) ->
     return cb err if err
     words = {}
@@ -83,5 +85,10 @@ writeWords = (words, cb) ->
   .map (l) -> l.join '\t'
   .join '\n'
   fs.writeFile data + '/pronunciations', sorted, cb
+
+cleanup = (cb) ->
+  return cb() unless process.argv[2] is 'clean'
+  console.log 'Cleaning up...'
+  exec "rm #{data}/mpron.txt", cb
 
 main (err) -> throw err if err
