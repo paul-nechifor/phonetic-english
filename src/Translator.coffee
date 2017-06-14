@@ -1,5 +1,7 @@
+data = require '../gen/pronunciations'
+
 module.exports = class Translator
-  constructor: (data, spelling=Translator.spelling.default) ->
+  constructor: (spelling=Translator.spelling.default) ->
     @map = map = toMap data, spelling
     @translateFunc = do (map) ->
       (word) ->

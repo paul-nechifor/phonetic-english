@@ -5,14 +5,13 @@
   "description": "Transforms English spelling to be phonetic.",
   "main": "./lib",
   "scripts": {
-    "build": "rm -fr lib; coffee -cbo lib src; coffee gen/data.coffee",
+    "build": "rm -fr lib; coffee -cbo lib src; mkdir -p gen; coffee src/generatePronunciations.coffee",
     "test": "mocha --compilers coffee:coffee-script/register"
   },
-  "dependencies": {
+  "devDependencies": {
     "chai": "^2.2.0",
     "coffee-script": "^1.9.2",
-    "mocha": "^2.2.4",
-    "optimist": "^0.6.1"
+    "mocha": "^2.2.4"
   },
   "repository": {
     "type": "git",

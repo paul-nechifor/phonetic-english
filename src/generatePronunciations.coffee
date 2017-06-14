@@ -1,7 +1,8 @@
 {exec} = require 'child_process'
 fs = require 'fs'
 
-data = __dirname + '/../data'
+pronFile = __dirname + '/../data/mpron10/mpron.txt'
+outputJsFile = __dirname + '/../gen/pronunciations.js'
 
 mobySymbols = """
   &    (@)  A    eI   @    -    b    tS
@@ -19,7 +20,7 @@ ordMap['_'] = '-' # Dashes are represended in moby as '_'. Map back to '-'.
 # Transforms the codes to use single ordered characters for simpler processing.
 main = (cb) ->
   console.log 'Transforming pronunciations...'
-  fs.readFile data + '/mpron10/mpron.txt', {encoding: 'utf8'}, (err, data) ->
+  fs.readFile pronFile, {encoding: 'utf8'}, (err, data) ->
     return cb err if err
     words = {}
     for line in data.split '\n'
@@ -59,10 +60,11 @@ addWord = (words, line) ->
 writeWords = (words, cb) ->
   sorted = []
   sorted.push [word, encoding] for word, encoding of words
-  sorted = sorted
+  data = sorted
   .sort()
   .map (l) -> l.join '\t'
   .join '\n'
-  fs.writeFile data + '/pronunciations', sorted, cb
+  data = "module.exports = #{JSON.stringify data};"
+  fs.writeFile outputJsFile, data, cb
 
 main (err) -> throw err if err

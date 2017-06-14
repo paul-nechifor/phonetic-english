@@ -10,12 +10,9 @@ Transforms English spelling to be phonetic.
 
 ## TODO
 
-- include the moby file
-- remove coffee-script from prod dependencies
 - add npm-shrinkwrap
 - update the packages
 - expand fields in package.json
-- add npmignore.
 - publish new version
 
 ## License

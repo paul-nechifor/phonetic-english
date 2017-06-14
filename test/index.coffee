@@ -1,5 +1,4 @@
 {Translator} = require '../src'
-{getPronunciations} = require '../src/main'
 require('chai').should()
 
 correct = [
@@ -10,8 +9,7 @@ correct = [
 ]
 
 describe 'Translator', ->
-  data = getPronunciations()
-  t = new Translator data
+  t = new Translator
   describe '#translate', ->
     for text, i in correct by 2
       do (text, i) ->
