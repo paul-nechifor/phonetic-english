@@ -1,8 +1,8 @@
 {
   "name": "phonetic-english",
-  "version": "0.0.0",
+  "version": "1.0.0-beta.0",
   "author": "Paul Nechifor <paul@nechifor.net> (http://nechifor.net/)",
-  "description": "Transforms English spelling to be phonetic.",
+  "description": "Transforms English to a phonetic spelling.",
   "main": "./lib",
   "scripts": {
     "build": "rm -fr lib; coffee -cbo lib src; mkdir -p gen; coffee src/generatePronunciations.coffee",
@@ -15,7 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/paul-nechifor/phonetic-english"
+    "url": "git+https://github.com/paul-nechifor/phonetic-english.git"
   },
+  "keywords": [
+    "english",
+    "phonetic",
+    "spelling",
+    "ipa"
+  ],
+  "bugs": {
+    "url": "https://github.com/paul-nechifor/phonetic-english/issues"
+  },
+  "homepage": "https://github.com/paul-nechifor/phonetic-english#readme",
   "license": "ISC"
 }

@@ -1,6 +1,6 @@
 # Phonetic English
 
-Transforms English spelling to be phonetic.
+Transforms English to a phonetic spelling.
 
 ## Usage
 
@@ -11,7 +11,6 @@ Transforms English spelling to be phonetic.
 ## TODO
 
 - add npm-shrinkwrap
-- expand fields in package.json
 - publish new version
 
 ## License
