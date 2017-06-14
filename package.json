@@ -1,6 +1,6 @@
 {
   "name": "phonetic-english",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0",
   "author": "Paul Nechifor <paul@nechifor.net> (http://nechifor.net/)",
   "description": "Transforms English to a phonetic spelling.",
   "main": "./lib",
