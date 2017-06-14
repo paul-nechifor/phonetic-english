@@ -5,7 +5,7 @@
   "description": "Transforms English spelling to be phonetic.",
   "main": "./lib",
   "scripts": {
-    "postinstall": "rm -fr lib; coffee -cbo lib src",
+    "build": "rm -fr lib; coffee -cbo lib src; coffee gen/data.coffee",
     "test": "mocha --compilers coffee:coffee-script/register"
   },
   "dependencies": {
@@ -18,5 +18,5 @@
     "type": "git",
     "url": "https://github.com/paul-nechifor/phonetic-english"
   },
-  "license": "MIT"
+  "license": "ISC"
 }

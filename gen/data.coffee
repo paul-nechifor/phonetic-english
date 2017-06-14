@@ -16,31 +16,10 @@ ordMap = {}
 ordMap[s] = String.fromCharCode 65 + i for s, i in mobySymbols
 ordMap['_'] = '-' # Dashes are represended in moby as '_'. Map back to '-'.
 
-main = (cb) ->
-  downloadFile (err) ->
-    return cb err if err
-    processPronunciations (err) ->
-      return cb err if err
-      cleanup cb
-
-downloadFile = (cb) ->
-  return cb() if fs.existsSync data + '/mpron.txt'
-  # You can't pipe wget and unzip because the ZIP format was invented by people
-  # who think that having the file list at the end of the archive is a good
-  # idea.
-  zip = data + '/mpron.zip'
-  console.log 'Downloading the pronunciations...'
-  exec """
-    mkdir -p '#{data}' 2>/dev/null
-    wget 'http://www.gutenberg.org/dirs/etext02/mpron10.zip' -qO '#{zip}'
-    unzip -p '#{zip}' mpron.txt > '#{data}'/mpron.txt
-    rm '#{zip}'
-  """, cb
-
 # Transforms the codes to use single ordered characters for simpler processing.
-processPronunciations = (cb) ->
+main = (cb) ->
   console.log 'Transforming pronunciations...'
-  fs.readFile data + '/mpron.txt', {encoding: 'utf8'}, (err, data) ->
+  fs.readFile data + '/mpron10/mpron.txt', {encoding: 'utf8'}, (err, data) ->
     return cb err if err
     words = {}
     for line in data.split '\n'
@@ -85,10 +64,5 @@ writeWords = (words, cb) ->
   .map (l) -> l.join '\t'
   .join '\n'
   fs.writeFile data + '/pronunciations', sorted, cb
-
-cleanup = (cb) ->
-  return cb() unless process.argv[2] is 'clean'
-  console.log 'Cleaning up...'
-  exec "rm #{data}/mpron.txt", cb
 
 main (err) -> throw err if err
