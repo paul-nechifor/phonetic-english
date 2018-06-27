@@ -1,3 +1,7 @@
+# This repository has been moved to [gitlab.com/paul-nechifor/phonetic-english](http://gitlab.com/paul-nechifor/phonetic-english).
+
+Old readme:
+
 # Phonetic English
 
 Transforms English to a phonetic spelling.
